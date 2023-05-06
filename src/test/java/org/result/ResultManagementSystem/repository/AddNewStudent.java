@@ -156,5 +156,9 @@ class AddNewStudent {
         List<Level> levels=levelRepository.findAll();
         levels.forEach(System.out::println);
     }
+    @Test
+    public  void deleteStudent(){
+
+    }
 
 }
