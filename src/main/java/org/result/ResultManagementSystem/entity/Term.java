@@ -17,6 +17,7 @@ public class Term {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private TermEnum name;
+    private String term;
+    private String description;
 
 }
