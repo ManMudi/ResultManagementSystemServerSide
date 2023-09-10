@@ -18,7 +18,5 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private RoleEnum role;
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "role")
-    private Set<Users> users=new HashSet<>();
 
 }

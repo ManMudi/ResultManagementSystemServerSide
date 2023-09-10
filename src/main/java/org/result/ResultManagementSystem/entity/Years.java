@@ -3,18 +3,18 @@ package org.result.ResultManagementSystem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "marks")
-public class Mark {
+@Table(name = "years")
+public class Years {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double mark;
-
+    private String yearValue;
 
 }

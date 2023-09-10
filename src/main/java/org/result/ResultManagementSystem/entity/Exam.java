@@ -18,13 +18,6 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "exam")
-    private List<Mark> marks=new ArrayList<>();
-    @ManyToOne
-    @JoinColumn(name = "term_id",referencedColumnName = "id")
-    private Term term;
-    @ManyToOne
-    @JoinColumn(name = "year_id",referencedColumnName = "id")
-    private Year year;
+
 
 }

@@ -1,20 +1,24 @@
 package org.result.ResultManagementSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
+import java.util.List;
+
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "marks")
-public class Mark {
+@Entity
+@Table(name = "levels")
+public class Levels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double mark;
+    private String levelName;
 
 
 }

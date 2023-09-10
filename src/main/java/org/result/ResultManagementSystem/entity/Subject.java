@@ -18,6 +18,5 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "subject")
-    private List<Mark> marks=new ArrayList<>();
+
 }
