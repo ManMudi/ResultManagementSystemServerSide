@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin("*")
 @RequestMapping("/students")
 @RestController
 @AllArgsConstructor
@@ -32,8 +31,8 @@ public class StudentController {
     //Build API to Get ALL Student
     @GetMapping
     public  ResponseEntity<List<StudentDto>> getAllStudents(){
-        List<StudentDto> studentDtos=studentService.getAllStudent();
-        return  new ResponseEntity<>(studentDtos,HttpStatus.OK);
+        List<StudentDto> studentDto=studentService.getAllStudent();
+        return  new ResponseEntity<>(studentDto,HttpStatus.OK);
     }
 
     //Build REST API to Update Students

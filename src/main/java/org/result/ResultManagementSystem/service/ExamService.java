@@ -10,6 +10,6 @@ public interface ExamService {
     ExamDto getExamById(Long id);
     List<ExamDto> getAllExam();
     ExamDto updateExam(ExamDto examDto,Long id);
-
     void deleteExamById(Long id);
 }
+

@@ -28,8 +28,8 @@ public class LevelController {
 
     //get Level By ID REST API
     @GetMapping("{id}")
-    public ResponseEntity<LevelDto> responseEntity(@PathVariable("id") Long levelid){
-        LevelDto levelDto=levelService.getLevelById(levelid);
+    public ResponseEntity<LevelDto> responseEntity(@PathVariable("id") Long levelId){
+        LevelDto levelDto=levelService.getLevelById(levelId);
         return new ResponseEntity<>(levelDto,HttpStatus.OK);
     }
      @GetMapping

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class StudentImple implements StudentService {
+public class StudentImpl implements StudentService {
 
     private StudentRepository studentRepository;
     private LevelRepository levelRepository;
@@ -40,7 +40,7 @@ public class StudentImple implements StudentService {
     @Override
     public List<StudentDto> getAllStudent() {
         List<Student> studentList=studentRepository.findAll();
-        return studentList.stream().map( (allStudent)->StudentMapper.mapToStudentDto(allStudent))
+        return studentList.stream().map(StudentMapper::mapToStudentDto)
                 .collect(Collectors.toList());
     }
 
@@ -58,8 +58,7 @@ public class StudentImple implements StudentService {
                 ()->new ResourceNotFoundException("Student is not exist with given id : "+ updatedStudent.getLevelId()));
         student.setLevels(levels);
         studentRepository.save(student);
-        StudentDto studentDto=StudentMapper.mapToStudentDto(student);
-        return studentDto;
+        return StudentMapper.mapToStudentDto(student);
     }
 
     @Override

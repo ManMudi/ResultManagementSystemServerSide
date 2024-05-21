@@ -6,16 +6,18 @@ import org.result.ResultManagementSystem.entity.Student;
 public class StudentMapper {
 
     public static StudentDto mapToStudentDto(Student student){
-        return new StudentDto(
-                student.getId(),
-                student.getFirstName(),
-                student.getMiddleName(),
-                student.getLastName(),
-                student.getGender(),
-                student.getPhoneNumber(),
-                student.getDateOfBirth(),
-                student.getLevels().getId()
-        );
+
+        StudentDto studentDto=new StudentDto();
+               studentDto.setId(student.getId());
+                studentDto.setFirstName(student.getFirstName());
+                studentDto.setMiddleName(student.getMiddleName());
+                studentDto.setLastName(student.getLastName());
+                studentDto.setGender(student.getGender());
+                studentDto.setPhoneNumber(student.getPhoneNumber());
+                studentDto.setDateOfBirth(student.getDateOfBirth());
+                studentDto.setLevelId(student.getLevels().getId());
+                return studentDto;
+
     }
 
     public  static  Student mapToStudent(StudentDto studentDto){
