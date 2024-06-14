@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "levels")
+@Table(name = "level")
 public class Levels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

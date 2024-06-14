@@ -25,7 +25,7 @@ public class SubjectImple implements SubjectService {
     }
 
     @Override
-    public SubjectDto findSubjectById(Long id) {
+    public SubjectDto findSubjectById(String id) {
         Subject subject=subjectRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Subject is not exist with given id : "+ id));
         return SubjectMapper.mapToSubjectDto(subject);
@@ -39,7 +39,7 @@ public class SubjectImple implements SubjectService {
     }
 
     @Override
-    public SubjectDto updateSubject(SubjectDto subjectDto, Long id) {
+    public SubjectDto updateSubject(SubjectDto subjectDto, String id) {
         Subject subject=subjectRepository.findById(id).orElseThrow(
                 ()->new ResourceNotFoundException("Subject is not exist with given id : "+ id));
         subject.setSubject(subjectDto.getSubject());
@@ -49,7 +49,7 @@ public class SubjectImple implements SubjectService {
     }
 
     @Override
-    public void deleteSubject(Long id) {
+    public void deleteSubject(String id) {
         Subject subject=subjectRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Subject is not exist with given id : "+ id));
         subjectRepository.deleteById(id);

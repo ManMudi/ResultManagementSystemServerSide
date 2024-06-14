@@ -34,8 +34,8 @@ public class LevelController {
     }
      @GetMapping
     public  ResponseEntity<List<LevelDto>> responseEntity(){
-        List<LevelDto> levelDtos=levelService.getAllLevel();
-        return new ResponseEntity<>(levelDtos,HttpStatus.OK);
+        List<LevelDto> levelDto=levelService.getAllLevel();
+        return new ResponseEntity<>(levelDto,HttpStatus.OK);
     }
     @PutMapping("{levelId}")
     public  ResponseEntity<LevelDto> levelDtoResponseEntity(@RequestBody LevelDto levelDto,@PathVariable("levelId") Long id){

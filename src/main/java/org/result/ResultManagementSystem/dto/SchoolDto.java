@@ -5,13 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
-public class SubjectDto {
+@AllArgsConstructor
+public class SchoolDto {
 
     private String id;
-    private String subject;
-    private String description;
+    private String name;
+    private String address;
+    private String email;
+    private String phone;
+
 }

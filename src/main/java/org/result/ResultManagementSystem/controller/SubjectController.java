@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RequestMapping("/subjects")
 @RestController
 @AllArgsConstructor
@@ -22,7 +22,7 @@ public class SubjectController {
     }
     //GET BY ID REST API
     @GetMapping("{id}")
-    public ResponseEntity<SubjectDto> findSubjectById(@PathVariable("id") Long subjectId){
+    public ResponseEntity<SubjectDto> findSubjectById(@PathVariable("id") String subjectId){
         SubjectDto subjectDto=subjectService.findSubjectById(subjectId);
         return new ResponseEntity<>(subjectDto,HttpStatus.OK);
     }
@@ -34,13 +34,13 @@ public class SubjectController {
     }
     //UPDATE REST API
     @PutMapping("{id}")
-    public  ResponseEntity<SubjectDto> updateSubject(@RequestBody SubjectDto subjectDto,@PathVariable("id") Long subjectId){
+    public  ResponseEntity<SubjectDto> updateSubject(@RequestBody SubjectDto subjectDto,@PathVariable("id") String subjectId){
         SubjectDto subjectDto1=subjectService.updateSubject(subjectDto,subjectId);
         return new ResponseEntity<>(subjectDto1,HttpStatus.OK);
     }
     //DELETE REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteSubject(@PathVariable("id") Long subjectId){
+    public ResponseEntity<String> deleteSubject(@PathVariable("id") String subjectId){
         subjectService.deleteSubject(subjectId);
         return new ResponseEntity<>("Subject Deleted Successfully !",HttpStatus.OK);
     }

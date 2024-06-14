@@ -6,15 +6,17 @@ import org.result.ResultManagementSystem.entity.Mark;
 public class MarkMapper {
 
     public static MarkDto mapToMarkDto(Mark mark){
-        return new MarkDto(
-                mark.getId(),
-                mark.getMark(),
-                mark.getSubject().getId(),
-                mark.getExam().getId(),
-                mark.getTerm().getId(),
-                mark.getYears().getId(),
-                mark.getSubject().getId()
-        );
+
+                MarkDto markDto=new MarkDto();
+                markDto.setId(mark.getId());
+                markDto.setStudentId(mark.getId());
+                markDto.setMark(mark.getMark());
+                markDto.setExamId(mark.getExam().getId());
+                markDto.setTermId(mark.getTerm().getId());
+                markDto.setMyYearId(mark.getMyYear().getId());
+                markDto.setSubjectId(mark.getSubject().getId());
+                return markDto;
+
     }
 
     public  static Mark mapToMark(MarkDto markDto){

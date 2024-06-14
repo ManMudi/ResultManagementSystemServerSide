@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class LevelServiceImple implements LevelService {
+public class LevelServiceImpl implements LevelService {
     private LevelRepository levelRepository;
     @Override
     public LevelDto createLevel(LevelDto levelDto) {
@@ -33,7 +33,7 @@ public class LevelServiceImple implements LevelService {
     @Override
     public List<LevelDto> getAllLevel() {
         List<Levels> levelsList=levelRepository.findAll();
-        return levelsList.stream().map( (allLevel)-> LevelMapper.mapToLevelDto(allLevel))
+        return levelsList.stream().map(LevelMapper::mapToLevelDto)
                 .collect(Collectors.toList());
     }
 

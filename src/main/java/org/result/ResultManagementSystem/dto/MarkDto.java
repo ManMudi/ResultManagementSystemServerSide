@@ -15,9 +15,9 @@ public class MarkDto {
 
     private Long id;
     private BigDecimal mark;
-    private Long subjectId;
+    private String subjectId;
     private Long examId;
     private Long termId;
-    private Long yearId;
+    private Long myYearId;
     private Long studentId;
 }

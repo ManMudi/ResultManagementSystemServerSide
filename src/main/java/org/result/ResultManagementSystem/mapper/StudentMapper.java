@@ -7,15 +7,15 @@ public class StudentMapper {
 
     public static StudentDto mapToStudentDto(Student student){
 
-        StudentDto studentDto=new StudentDto();
-               studentDto.setId(student.getId());
+                StudentDto studentDto=new StudentDto();
+                studentDto.setId(student.getId());
                 studentDto.setFirstName(student.getFirstName());
                 studentDto.setMiddleName(student.getMiddleName());
                 studentDto.setLastName(student.getLastName());
                 studentDto.setGender(student.getGender());
                 studentDto.setPhoneNumber(student.getPhoneNumber());
                 studentDto.setDateOfBirth(student.getDateOfBirth());
-                studentDto.setLevelId(student.getLevels().getId());
+                studentDto.setLevelId(student.getLevel().getId());
                 return studentDto;
 
     }

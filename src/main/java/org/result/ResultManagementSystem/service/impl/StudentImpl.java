@@ -25,7 +25,7 @@ public class StudentImpl implements StudentService {
         Student student= StudentMapper.mapToStudent(studentDto);
         Levels levels=levelRepository.findById(studentDto.getLevelId()).orElseThrow(
                 ()->new ResourceNotFoundException("Class is not exist with given id : "+ studentDto.getLevelId()));
-        student.setLevels(levels);
+        student.setLevel(levels);
         Student savedStudent=studentRepository.save(student);
         return StudentMapper.mapToStudentDto(savedStudent);
     }
@@ -56,7 +56,7 @@ public class StudentImpl implements StudentService {
         student.setPhoneNumber(updatedStudent.getPhoneNumber());
         Levels levels=levelRepository.findById(updatedStudent.getLevelId()).orElseThrow(
                 ()->new ResourceNotFoundException("Student is not exist with given id : "+ updatedStudent.getLevelId()));
-        student.setLevels(levels);
+        student.setLevel(levels);
         studentRepository.save(student);
         return StudentMapper.mapToStudentDto(student);
     }

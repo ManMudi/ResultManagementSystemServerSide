@@ -33,12 +33,13 @@ public class MarkServiceImple implements MarkService {
         Term term=termRepository.findById(markDto.getTermId()).orElseThrow(
                 ()->new RuntimeException("Term of this Id is not Found "+ markDto.getTermId()));
         mark.setTerm(term);
-        Years years=yearRepository.findById(markDto.getYearId()).orElseThrow(
-                ()->new RuntimeException("Year of this Id is not Found "+ markDto.getYearId()));
-        mark.setYears(years);
+
         Student student=studentRepository.findById(markDto.getStudentId()).orElseThrow(
                 ()->new RuntimeException("Student of this Id is not Found "+ markDto.getStudentId()));
         mark.setStudent(student);
+        MyYear myYear=yearRepository.findById(markDto.getMyYearId()).orElseThrow(
+                ()->new RuntimeException("Year of this Id is not Found "+ markDto.getMyYearId()));
+        mark.setMyYear(myYear);
         Mark mark1=markRepository.save(mark);
         return MarkMapper.mapToMarkDto(mark1);
     }
@@ -53,7 +54,7 @@ public class MarkServiceImple implements MarkService {
     @Override
     public List<MarkDto> findAllMark() {
         List<Mark> marks=markRepository.findAll();
-        return marks.stream().map( (mark)-> MarkMapper.mapToMarkDto(mark))
+        return marks.stream().map(MarkMapper::mapToMarkDto)
                 .collect(Collectors.toList());
     }
 
@@ -78,9 +79,9 @@ public class MarkServiceImple implements MarkService {
         Term term=termRepository.findById(markDto.getTermId()).orElseThrow(
                 ()->new RuntimeException("Term of this Id is not Found "+ markDto.getTermId()));
         mark.setTerm(term);
-        Years years=yearRepository.findById(markDto.getYearId()).orElseThrow(
-                ()->new RuntimeException("Year of this Id is not Found "+ markDto.getYearId()));
-        mark.setYears(years);
+        MyYear years=yearRepository.findById(markDto.getMyYearId()).orElseThrow(
+                ()->new RuntimeException("Year of this Id is not Found "+ markDto.getMyYearId()));
+        mark.setMyYear(years);
         Student student=studentRepository.findById(markDto.getStudentId()).orElseThrow(
                 ()->new RuntimeException("Student of this Id is not Found "+ markDto.getStudentId()));
         mark.setStudent(student);

@@ -25,5 +25,5 @@ public class Student {
     private LocalDate dateOfBirth;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Levels levels;
+    private Levels level;
 }
