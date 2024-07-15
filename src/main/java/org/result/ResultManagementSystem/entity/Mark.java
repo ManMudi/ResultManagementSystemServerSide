@@ -2,7 +2,6 @@ package org.result.ResultManagementSystem.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import java.math.BigDecimal;
 
@@ -31,7 +30,7 @@ public class Mark {
     @JoinColumn
     private MyYear myYear;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "student_id",referencedColumnName = "id")
     private Student student;
 
 

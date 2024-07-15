@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/levels")
-public class LevelController {
+public class LevelController {   
 
     private LevelService levelService;
 

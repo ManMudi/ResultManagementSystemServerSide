@@ -2,8 +2,6 @@ package org.result.ResultManagementSystem.repository;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.result.ResultManagementSystem.entity.Role;
-import org.result.ResultManagementSystem.entity.Users;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name = "subjects")
 public class Subject {
     @Id
+    @Column(unique = true)
     private String id;
     private String subject;
     private String description;
