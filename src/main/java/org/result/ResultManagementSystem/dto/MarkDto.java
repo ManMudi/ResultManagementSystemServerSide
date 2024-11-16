@@ -20,4 +20,6 @@ public class MarkDto {
     private Long termId;
     private Long myYearId;
     private Long studentId;
+    private String schoolId;
+
 }

@@ -39,6 +39,8 @@ public class SecurityConfig {
                         .requestMatchers("/levels/**").hasAnyAuthority("ADMIN","ACADEMIC")
                         .requestMatchers("/schools/**").hasAnyAuthority("ADMIN","ACADEMIC")
                         .requestMatchers("/subject-ordinary/**").hasAnyAuthority("ADMIN","ACADEMIC")
+                        .requestMatchers("/mark-ordinary/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

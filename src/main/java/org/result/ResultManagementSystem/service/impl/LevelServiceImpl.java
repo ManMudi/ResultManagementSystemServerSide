@@ -1,10 +1,10 @@
 package org.result.ResultManagementSystem.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.result.ResultManagementSystem.dto.LevelDto;
 import org.result.ResultManagementSystem.entity.Levels;
 import org.result.ResultManagementSystem.exception.ResourceNotFoundException;
-import org.result.ResultManagementSystem.mapper.LevelMapper;
 import org.result.ResultManagementSystem.repository.LevelRepository;
 import org.result.ResultManagementSystem.service.LevelService;
 import org.springframework.stereotype.Service;
@@ -16,24 +16,25 @@ import java.util.stream.Collectors;
 @Service
 public class LevelServiceImpl implements LevelService {
     private LevelRepository levelRepository;
+    private ModelMapper modelMapper;
     @Override
     public LevelDto createLevel(LevelDto levelDto) {
-        Levels levels= LevelMapper.mapToLevel(levelDto);
+        Levels levels= modelMapper.map(levelDto, Levels.class);
         Levels savedLevel=levelRepository.save(levels);
-        return LevelMapper.mapToLevelDto(savedLevel);
+        return modelMapper.map(savedLevel,LevelDto.class);
     }
 
     @Override
     public LevelDto getLevelById(Long id) {
         Levels levels=levelRepository.findById(id).orElseThrow(
                 ()->new ResourceNotFoundException("Class is not exist with given id : "+ id));;
-        return LevelMapper.mapToLevelDto(levels);
+        return modelMapper.map(levels,LevelDto.class);
     }
 
     @Override
     public List<LevelDto> getAllLevel() {
         List<Levels> levelsList=levelRepository.findAll();
-        return levelsList.stream().map(LevelMapper::mapToLevelDto)
+        return levelsList.stream().map((levels)->modelMapper.map(levels,LevelDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -43,7 +44,7 @@ public class LevelServiceImpl implements LevelService {
                 ()->new ResourceNotFoundException("Class is not exist with given id : "+ id));
         levels.setLevelName(levelDto.getLevelName());
         levelRepository.save(levels);
-        return LevelMapper.mapToLevelDto(levels);
+        return modelMapper.map(levels,LevelDto.class);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class Mark {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Subject subject;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Exam exam;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,6 +32,9 @@ public class Mark {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id",referencedColumnName = "id")
     private Student student;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "school_id",referencedColumnName = "id")
+    private School school;
 
 
 }

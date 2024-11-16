@@ -1,12 +1,10 @@
 package org.result.ResultManagementSystem.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.result.ResultManagementSystem.dto.SchoolDto;
 import org.result.ResultManagementSystem.entity.School;
 import org.result.ResultManagementSystem.exception.ResourceNotFoundException;
-import org.result.ResultManagementSystem.mapper.SchoolMapper;
-import org.result.ResultManagementSystem.mapper.StudentMapper;
-import org.result.ResultManagementSystem.mapper.TermMapper;
 import org.result.ResultManagementSystem.repository.SchoolRepository;
 import org.result.ResultManagementSystem.service.SchoolService;
 import org.springframework.stereotype.Service;
@@ -21,12 +19,13 @@ import java.util.stream.Collectors;
 public class SchoolImpl implements SchoolService {
 
     private SchoolRepository schoolRepository;
+    private ModelMapper modelMapper;
 
     @Override
     public SchoolDto createSchool(SchoolDto schoolDto) {
-        School school= SchoolMapper.mapToSchool(schoolDto);
+        School school= modelMapper.map(schoolDto, School.class);
         School school1 = schoolRepository.save(school);
-        return SchoolMapper.mapToSchoolDto(school1);
+        return modelMapper.map(school1,SchoolDto.class);
     }
 
     @Override
@@ -38,20 +37,20 @@ public class SchoolImpl implements SchoolService {
        school.setAddress(schoolDto.getAddress());
        school.setPhone(schoolDto.getPhone());
        schoolRepository.save(school);
-        return SchoolMapper.mapToSchoolDto(school);
+        return modelMapper.map(school,SchoolDto.class);
     }
 
     @Override
     public SchoolDto getSchoolById(String id) {
         School school=schoolRepository.findById(id).orElseThrow(() -> new
                 ResourceNotFoundException("Student is not exist with given id : "+ id));
-        return SchoolMapper.mapToSchoolDto(school);
+        return modelMapper.map(school,SchoolDto.class);
     }
 
     @Override
     public List<SchoolDto> getAllSchool() {
        List<School> school= schoolRepository.findAll();
-        return school.stream().map(SchoolMapper::mapToSchoolDto)
+        return school.stream().map((school1)->modelMapper.map(school1,SchoolDto.class))
                 .collect(Collectors.toList());
     }
 
